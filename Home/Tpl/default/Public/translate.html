@@ -1,0 +1,81 @@
+
+		<if condition='$Think.config.is_translate neq 0'>
+		  <p class="translation-links" style="padding:0px; text-align:center;">	
+          <A href="#" data-lang="de"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_deutsch1.gif" width=20 
+                  height=14> <SPAN style="COLOR: #666">Deutsch</SPAN></A> 
+				  
+				  <A href="#" data-lang="es"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_espanol.gif" width=20 
+                  height=14> <SPAN style="COLOR: #666">Espanol</SPAN></A>
+				   
+				  <A href="#" data-lang="fr"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_francies.gif" width=20 
+                  height=14> <SPAN style="COLOR: #666">Francais</SPAN></A> 
+				  
+				  <A href="#" data-lang="it"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_italino.gif" width=20 
+                  height=14> <SPAN style="COLOR: #666">Italiano</SPAN></A>
+				   
+				  <A href="#" data-lang="pt"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_portgues.gif" width=20 
+                  height=14> <SPAN style="COLOR: #666">Portugues</SPAN></A>
+				   
+          <A href="#" data-lang="ja"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_japan.jpg" width=20 
+                  height=14> <SPAN style="COLOR: #666">Japanese</SPAN></A> 
+				  
+				  <A href="#" data-lang="ko"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_korea.jpg" width=20 
+                  height=14> <SPAN style="COLOR: #666">Korean</SPAN></A> 
+				  
+				  <A href="#" data-lang="ar"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_arabia.jpg" width=20 
+                  height=14> <SPAN style="COLOR: #666">Arabic</SPAN></A>
+				   
+				  <A href="#" data-lang="ru"><IMG border=0 
+                  align=absMiddle src="/Home/Tpl/default/Public/images/ico_russia.jpg" width=20 
+                  height=14> <SPAN style="COLOR: #666">Russian</SPAN></A>
+        </p>
+
+          <!-- Code provided by Google -->
+          <div id="google_translate_element" style="display:none;"></div>
+          <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element'); //remove the layout
+            }
+          </script>
+          <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async type="text/javascript"></script>
+
+
+          <script type="text/javascript">
+              function triggerHtmlEvent(element, eventName) {
+          var event;
+          if(document.createEvent) {
+              event = document.createEvent('HTMLEvents');
+              event.initEvent(eventName, true, true);
+              element.dispatchEvent(event);
+          } else {
+              event = document.createEventObject();
+              event.eventType = eventName;
+              element.fireEvent('on' + event.eventType, event);
+          }
+          }
+                      <!-- Flag click handler -->
+          $('.translation-links a').click(function(e) {
+
+            e.preventDefault();
+            var lang = $(this).data('lang');
+            $('#google_translate_element select option').each(function(){
+               // console.log($(this).val());
+              if($(this).val().indexOf(lang) > -1) {
+                  $(this).parent().val($(this).val());
+                  var container = document.getElementById('google_translate_element');
+                  var select = container.getElementsByTagName('select')[0];
+                  triggerHtmlEvent(select, 'change');
+              }
+          });
+          });
+
+          </script>
+        </if>

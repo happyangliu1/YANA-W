@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$article.etitle}></title>
+    <meta name="keywords" content="<{$article.ekeywords}>" />
+    <meta name="description" content="<{$article.edescription}>" />
+    <include file='Public:file'/>
+    <link href="../Public/css/lightbox.css" rel="stylesheet">
+    <script src="../Public/js/lightbox.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.showpic_flash').bxSlider({
+              pagerCustom: '#pic-page',
+               adaptiveHeight: true,
+            });
+
+        });
+    </script>
+  </head>
+  <body id="photo">
+  
+      <include file='Public:e_head'/>
+      <include file='Public:listbg'/>
+
+      <div class="container">
+            <div class="bread_bg">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="bread_nav">
+                                    <span class="fa fa-home" aria-hidden="true"></span>&nbsp;<{:W('Bread',array('id'=>$article['pid'],'lang'=>'e'))}>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+   
+      <div class="container">    
+           <div class="row">
+
+                  <!-- right -->
+                  <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                        <div class="right_head">
+                              <h2><span><{$articlelist.ename}></span></h2>
+                        </div>
+
+                        <if condition="$photo neq ''">
+                        <!-- showpic -->
+                        <div class="col-sm-11 col-md-8 col-md-offset-2" style="margin-bottom:30px; margin-top:20px;">
+                              <ul class="showpic_flash">
+                                    <volist name='photo' id='vo'>
+                                    <li>
+                                          <a class="example-image-link" href="__ROOT__/Uploads/<{$photo[$key]}>" data-lightbox="example-set" target="_blank"><img class="example-image" src="__ROOT__/Uploads/<{$photo[$key]}>" alt="<{$article.ename}>"/></a>
+                                    </li>
+                                    </volist>
+                              </ul>
+                              <div id="pic-page">
+                                    <volist name='photo' id='vo'>
+                                    <a data-slide-index="<{$key}>" href="__ROOT__/Uploads/<{$photo[$key]}>"><img src="__ROOT__/Uploads/<{$photo[$key]}>" alt="<{$article.ename}>" /></a>
+                                    </volist>
+                              </div>
+                        </div>
+                        </if>
+
+                        <div class="photo_con">
+                        <{$article.econtents}>
+                        </div>
+
+                        <div class="point">
+                              <span class="to_prev col-xs-12 col-sm-6 col-md-6"><{$prevnext.prev}></span>
+                              <span class="to_next col-xs-12 col-sm-6 col-md-6"><{$prevnext.next}></span>
+                        </div>
+                
+                        <div class="list_related"> 
+                              <div class="right_head">
+                                    <h2><span>RELATED PHOTO</span></h2>
+                              </div>
+                              <div class="product_list related_list">
+                                    <volist name="related" id="vo" offset="0" length="4">
+                                    <div class="col-sm-4 col-md-3 col-mm-6 case_img">
+                                          <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Photo','lang'=>'e'))}>">
+                                                <img  src="__ROOT__/Uploads/<{$vo.thumb}>" class="img-thumbnail" alt="<{$vo.ename}>"/>
+                                          </a>
+                                          <p class="case_title">
+                                                <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Photo','lang'=>'e'))}>" title="<{$vo.ename}>"><{$vo.ename|mb_substr=###,0,28,'utf-8'}></a>
+                                          </p>
+                                    </div>
+                                    </volist>
+                              </div>
+                        </div>
+
+                  </div>    
+
+                  <!-- left -->
+                  <div class="col-xs-12 col-sm-4 col-md-3">
+                        <h3 class="left_h3"><span>CATEGORIES</span></h3>
+                        <div class="left_column">
+                              <{:W('Left',array('id'=>$article['bid'],'type'=>'photo','lang'=>'e'))}>
+                        </div>
+                        <div class="left_news">
+                              <h3 class="left_h3"><span>LATEST NEWS</span></h3>
+                              <{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>
+                        </div>
+                        <include file='Public:e_contact'/>
+                  </div>
+
+            </div>
+      </div>
+    
+      <include file='Public:e_foot'/>
+    
+  </body>
+</html>

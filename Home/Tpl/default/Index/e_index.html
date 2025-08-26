@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<if condition="$Think.config.is_index neq 1">
+	
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$Think.config.seo_etitle}> <if condition="$Think.config.web_name neq ''"> - <{$Think.config.web_ename}></if></title>
+    <meta name="keywords" content="<{$Think.config.seo_ekeywords}>" />
+    <meta name="description" content="<{$Think.config.seo_edescription}>" />
+    <{$Think.config.web_Google_Verification}>
+    	<link rel="icon" href="favicon.ico"/>
+    <include file='Public:file'/>
+  </head>
+<body>
+<if condition="$Think.config.show_tishi eq '1'">
+    <div class="nlyz">
+    <div class="nlyz_main">
+    	<div class="col-xs-12 col-md-12 nlzy_text">
+    		<div class="years_title">敬请开启</div>  
+    		<p class="nlyz_ms">亲爱的渔课用户，您的网站交付啦！请您开启网站。</p>
+    		<p>交付只是服务的开始而非结束，请您注意以下事项：</p>
+    		<div class="Tips">
+    		<p>1，设计图有需要调整的地方请与我们继续沟通</p>
+    		<p>2，请及时登录《 <a class="ht" href="<{$Think.config.WEB_URL}>/Kogin" target="_blank">网站后台</a> 》，修改您的基本信息和联系方式</p>
+    		<p>3，有任何问题请到您的专属服务群反馈</p>
+    		</div>
+    		<p class="seeyou">感恩遇见，让我们一起携手做好您的外贸网站，助您的业务一臂之力。</p>
+    		<div class="nlyz_btn">
+    			<a class="over_gb">开启网站</a>
+    			<a class="nlyz_gb">不再提示</a>
+    		</div>
+    	</div>
+    	<div class="close_x">X</div>
+    </div>
+    </div>
+    
+    <script>
+        $(".over_gb").click(function(){
+          $(".nlyz").hide();
+        });	
+        $(".close_x").click(function(){
+          $(".nlyz").hide();
+        });	
+        
+        $(".nlyz_gb").click(function(){
+            $.ajax({
+               type: "POST",
+               url: "__URL__/showtishi",
+               data: {},
+               async: false,    
+              success : function(result) {
+                $(".nlyz").hide();
+              }
+            });
+        });
+        </script>
+    </if>
+<include file='Public:e_head'/>
+
+<{:W('Flash',array('type'=>'flash','lang'=>'e'))}>
+	<script type="text/javascript">
+		$('.bxslider').bxSlider({
+			adaptiveHeight: true,
+			infiniteLoop: true,
+			hideControlOnEnd: true,
+			auto:true
+		});
+	</script>
+
+
+<div class="about_bg">
+	<div class="container">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="col-xs-12 col-sm-6 col-md-6" data-move-y="-40px">
+					<img class="about_img" src="__ROOT__/Uploads/<{:W('Flash',array('type'=>3,'id'=>9))}>" alt="About us">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6" data-move-y="40px">
+					<h3 class="about_h3"><{$titledata.NAME1}></h3>
+					<p class="about_p"><{$titledata.NAME2}></p>
+					<{:W( 'About',array( 'id'=>25,'len'=>450,'lang'=>'e'))}>
+					<a href="<{:W('Listhref',array('id'=>25,'lang'=>'e'))}>" class="about_btn">READ MORE</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class="container">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="product_index">
+					<div class="product_head" data-move-y="-30px">
+						<h2><{$titledata.NAME4}></h2>
+						<span></span>
+					</div>
+					<div class="product_list">
+						<{:W('List',array('table'=>'Product','bid'=>1,'id'=>5,'lang'=>'e'))}>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+	<div class="container">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="product_index">
+					<div class="product_head" data-move-y="-30px">
+						<h2><{$titledata.NAME5}></h2>
+						<span></span>
+					</div>
+					<div class="product_list">
+						<{:W('List',array('table'=>'Product','bid'=>1,'id'=>6,'lang'=>'e'))}>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+	<div class="container">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="product_index">
+					<div class="product_head" data-move-y="-30px">
+						<h2><{$titledata.NAME6}></h2>
+						<span></span>
+					</div>
+					<div class="product_list">
+						<{:W('List',array('table'=>'Product','bid'=>1,'id'=>7,'lang'=>'e'))}>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="../Public/js/jquery.smoove.min.js"></script>
+<script>$('.product_head,.product_img,.case_head,.case_img,.advantage_head,.advantage_list,.about_head,.js_about_left,.js_about_right,.news_head,.news_img,.cooperation_head,.cooperation_img').smoove({offset:'10%'});</script>
+<{:W('Link',array('type'=>1,'lang'=>'e'))}>    
+<{:W('Tags',array('lang'=>'e'))}>      	      	     
+	<include file='Public:e_foot'/>
+
+	
+  </body>
+  
+</if>
+
+<include file='Public:close'/>
+	
+</html>

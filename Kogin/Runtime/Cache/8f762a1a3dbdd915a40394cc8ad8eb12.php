@@ -1,0 +1,255 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../Public/css/index.css" />
+<script type="text/javascript" src="../Public/js/quickView.js"></script>
+<title>添加产品</title>
+<script type="text/javascript" charset="utf-8" src="<?php echo ($adminName); ?>/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo ($adminName); ?>/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="<?php echo ($adminName); ?>/ueditor/lang/zh-cn/zh-cn.js"></script>
+<link rel="stylesheet" type="text/css" href="../Public/css/webuploader.css" />
+<script type="text/javascript" src="../Public/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../Public/js/webuploader.min.js"></script>
+<SCRIPT language=javaScript>
+    function CheckJob() {
+      	var number = document.getElementById('sort').value;
+      	var reg = /^\d+$/;
+      	if (!number.match(reg)){
+      		alert ("排序号必须为数字!");
+      		document.myform.sort.focus();
+      		return false;
+      	}
+     }
+    var uploadurl = "<?php echo U('doUploads');?>",uploadswf="../Public/Uploader.swf";
+</SCRIPT>
+<script type="text/javascript" src="../Public/js/upload.js"></script>
+</head>
+<body>
+<DIV class="BodyRight">
+<DIV class="PageContent">
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+        <TBODY>
+        <TR>
+
+          <TD width="85" align="center" class="Move" id="setting1">
+            <A onClick="javascript:settingselect('1')" href="javascript:void(0);">中文信息</A>
+          </TD>
+          <TD width="5" align="center"><IMG src="../Public/images/tiao.gif"></TD>
+
+          <TD width="85" align="center" class="Out" id="setting2">
+            <A onClick="javascript:settingselect('2')" href="javascript:void(0);">英文信息</A>
+          </TD>
+          <TD align="left" class="LineRight" style="padding-left: 10px;"></TD>
+        </TR>
+
+      </TBODY>
+    </TABLE>
+  </TD>
+</TR>
+  <TR>
+    <TD class="LineRightBlue">
+      <TABLE width="95%" style="margin-left: 20px;" border="0" cellspacing="0" 
+      cellpadding="0">
+        <TBODY>
+        <TR>
+          <TD width="88%" height="24">产品管理 &gt; 添加产品</TD>
+          <TD width="12%" height="24" align="right"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV></DIV>
+
+<form action="<?php echo U('savepro');?>" method="post" name="myform" id="myform" enctype="multipart/form-data" onSubmit="return CheckJob()">
+  
+<DIV id="settingBox1">
+<DIV class="PageContent">
+<table width="98%" border="0" style="margin:20px;" class="ListCategory">
+  <tr>
+    <td width="10%">产品名称：</td>
+    <td width="90%" height="35"><input name="name" type="text" class="FormSmall" style="width: 320px;"> 
+	<span style="color:#F00; font-size:12px;">*必填</span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>产品分类:</td>
+    <td height="35">
+      <select name="pid" style="height:28px;">
+      <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["html"]); if($vo["level"] > 0): ?>┕<?php endif; echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>排序ID：</td>
+    <td height="35"><input name="sort" type="text" id="sort" value="0" class="FormSmall" style="width: 50px;"> <span style="color:#F00; font-size:12px;">*必须为数字</span><a title='只可填数字，数字越小排序越靠前。'style="margin-left: 5px;" href="#"><img src="../Public/images/help.gif"></a></td>
+  </tr>
+  
+  <tr>
+    <td>首页推荐：</td>
+    <td height="35">
+      <select name="featured" style="height:28px;">
+          <option value="1">是</option>
+          <option value="0">否</option>
+      </select>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>产品简介：</td>
+    <td height="110"><textarea name="introduce" class="FormSmall" style="width: 320px; height: 120px;"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>URL优化：</td>
+    <td height="35"><input name="url" type="text" class="FormSmall" style="width: 320px;"> <a title='URL只能是字母，数字，下划线或-'style="margin-left: 5px;" href="#"><img src="../Public/images/help.gif"></a></td>
+  </tr>
+  
+  <tr>
+    <td width="10%">SEO标题：</td>
+    <td width="90%" height="35"><input name="title" type="text" class="FormSmall" style="width: 320px;"> 
+	<span style="color:#F00; font-size:12px;">*必填</span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>SEO关键字：</td>
+    <td height="35"><input name="keywords" type="text" class="FormSmall" style="width: 320px;"></td>
+  </tr>
+  
+  <tr>
+    <td>SEO描述：</td>
+    <td height="110"><textarea name="description" class="FormSmall" style="width: 450px; height: 80px;"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>购买链接：</td>
+    <td height="35"><input name="buyname" type="text" class="FormSmall" style="width: 100px;" placeholder="按钮名称">&nbsp;&nbsp;
+    <input name="buylink" type="text" class="FormSmall" value="http://" style="width: 336px;">
+    </td>
+  </tr>
+  
+  <tr>
+    <td>缩略图：</td>
+    <td height="35"><input type='file' name='thumb'></td>
+  </tr>
+  
+  <tr>
+    <td>产品主图：</td>
+    <td style="padding:10px 0px;">
+      <div class="uploader-list-container">
+        <div class="queueList">
+          <div id="dndArea" class="placeholder">
+            <div id="filePicker-2"></div>
+          </div>
+        </div>
+        <div class="statusBar" style="display:none;">
+          <div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+          <div class="info"></div>
+          <div class="btns">
+            <div id="filePicker2"></div>
+            <div class="uploadBtn">开始上传</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photoname"></div>
+      <script type="text/javascript" >
+      var version = IEVersion();
+      if (version >-1 && version < 10) {
+        document.write("<p>您的IE浏览器版本过低，不支持此插件，请升级IE版本或使用非IE的浏览器。</p>");
+      };
+      </script>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>产品内容：</td>
+    <td>
+      <script id="contents" type="text/plain" style="width:98%;height:400px;"></script>
+    </td>
+  </tr>
+
+</table>
+ </DIV>
+</DIV>
+
+
+<DIV class="close" id="settingBox2">
+<DIV class="PageContent">
+<table width="98%" border="0" style="margin:20px;" class="ListCategory">
+  <tr>
+    <td width="10%" style="color:blue;">产品名称 (英文)：</td>
+    <td width="90%" height="35"><input name="ename" type="text" class="FormSmall" style="width: 320px;"> 
+  <span style="color:#F00; font-size:12px;">*必填</span>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color:blue;">产品简介(英文)：</td>
+    <td height="110"><textarea name="eintroduce" class="FormSmall" style="width: 320px; height: 120px;"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color:blue;">SEO标题 (英文)：</td>
+    <td height="35"><input name="etitle" type="text" class="FormSmall" style="width: 320px;"> 
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="color:blue;">SEO关键字 (英文)：</td>
+    <td height="35"><input name="ekeywords" type="text" class="FormSmall" style="width: 320px;"></td>
+  </tr>
+  
+  <tr>
+    <td style="color:blue;">SEO描述 (英文)：</td>
+    <td height="110"><textarea name="edescription" class="FormSmall" style="width: 450px; height: 80px;"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color:blue;">购买链接(英文)：</td>
+    <td height="35"><input name="ebuyname" type="text" class="FormSmall" style="width: 100px;" placeholder="按钮名称">&nbsp;&nbsp;
+    <input name="ebuylink" type="text" class="FormSmall" value="http://" style="width: 336px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color:blue;">产品内容 (英文)：</td>
+    <td>
+    <script id="econtents" name="econtents" type="text/plain" style="width:98%;height:500px;"><?php echo ($news["econtents"]); ?></script>
+    </td>
+  </tr>
+  </table>
+</DIV>
+</DIV>
+
+<div style="float:left; margin:-10px 0px 20px 135px;height:150px;">
+    <input type="submit" value="提交" class="bginput">&nbsp;&nbsp;
+    <input name="reset" type="reset"  class="bginput" value="重置" />
+</div>
+
+</form>
+
+<SCRIPT type="text/javascript">
+  //实例化编辑器
+  var ue = UE.getEditor('contents');
+  var ue2 = UE.getEditor('econtents');
+
+function settingselect(id){
+  document.getElementById('settingBox1').className="close";
+  document.getElementById('settingBox2').className="close";
+  document.getElementById('setting1').className="Out";
+  document.getElementById('setting2').className="Out";
+  
+  document.getElementById('setting'+id).className="Move";
+  document.getElementById('settingBox'+id).className="";
+}
+
+</SCRIPT>
+</body>
+</html>

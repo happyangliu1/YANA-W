@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inquiry-<{$Think.config.seo_etitle}></title>
+    <meta name="keywords" content="<{$Think.config.seo_ekeywords}>" />
+    <meta name="description" content="<{$Think.config.seo_edescription}>" />
+    <include file='Public:file'/>
+    <SCRIPT language=javaScript>
+    function CheckJob()
+    {
+        if (document.myform.product.value.length==""){
+            alert ("Please enter the product name!");
+            document.myform.product.focus();
+            return false;
+        }
+        if (document.myform.name.value.length==""){
+            alert ("Please enter your name!");
+            document.myform.name.focus();
+            return false;
+        }
+        if (document.myform.tel.value.length==""){
+            alert ("Please enter the phone number.");
+            document.myform.tel.focus();
+            return false;
+        }
+     }
+    </SCRIPT>
+  </head>
+  <body>
+  
+  <include file='Public:e_head'/>
+  <include file='Public:listbg'/>
+
+<div class="container">
+	<div class="bread_bg">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="bread_nav">
+					<span class="fa fa-home" aria-hidden="true"></span>&nbsp;<a href="<{:W('Index',array('cnen'=>'en','lang'=>'e'))}>">Home</a> &gt; Inquiry
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+   
+<div class="container">    
+	<div class="row">
+
+    <!-- right -->
+    <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+    	<div class="list_box">
+    		<div class="right_head">
+    			<h2><span>Inquiry</span></h2>
+    		</div>
+    		
+    		<div class="feedback">
+    			<form id="myform" name="myform" class="form-horizontal" method="post" action="__ROOT__/?m=Inquiry&a=check&g=e" onSubmit="return CheckJob()">
+    				<div class="form-group">
+    					<label for="products"class="col-sm-3 control-label">Product name: </label>
+    					<div class="col-sm-6">
+    						<input type="text" name="product" value="<{$ordername}>" class="form-control" id="products" placeholder="Required">
+    					</div>
+    				</div>
+
+            <div class="form-group">
+            	<label for="username" class="col-sm-3 control-label">Your Name: </label>
+            	<div class="col-sm-6">
+            		<input type="text" name="name" class="form-control" id="username" placeholder="Required">
+            	</div>
+            </div>
+
+            <div class="form-group">
+            	<label for="tel" class="col-sm-3 control-label">Phone: </label>
+            	<div class="col-sm-6">
+            		<input type="text" name="tel" class="form-control" id="tel" placeholder="Required">
+            	</div>
+            </div>
+
+            <div class="form-group">
+            	<label for="inputEmail" class="col-sm-3 control-label">E-mail: </label>
+            	<div class="col-sm-6">
+            		<input type="email" name="email" class="form-control" id="inputEmail">
+            	</div>
+            </div>
+            
+            <div class="form-group">
+            	<label for="contents" class="col-sm-3 control-label">Message: </label>
+            	<div class="col-sm-6">
+            		<textarea name="contents" class="form-control" rows="3"></textarea>
+            	</div>
+            </div>
+                      
+            <div class="form-group">
+            	<label for="code" class="col-xs-12 col-sm-3 control-label">Captcha: </label>
+            	<div class="col-xs-7 col-sm-2"><input type="text" name="code" class="form-control" id="code"></div>
+            	<div class="col-xs-2 col-sm-1"><img class="codeimg" src="<{:U('Common/verify')}>" onclick='this.src=this.src+"?"+Math.random()'/></div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px;">
+            	<div class="col-sm-offset-3 col-sm-10">
+            		<button type="submit" name="button" value="Send" class="btn btn-danger page-btn">Send</button>&nbsp;
+            		<button type="reset" name="reset" class="btn btn-default grey-btn">Reset</button>
+            	</div>
+            </div>
+                      
+    			</form>
+    		</div>                         
+    	
+    	</div>
+    </div>
+
+    <!-- left -->
+    <div class="col-xs-12 col-sm-4 col-md-3">
+    	<h3 class="left_h3"><span>CATEGORIES</span></h3>
+    	<div class="left_column">
+    		<{:W('Left',array('id'=>1,'type'=>'product','lang'=>'e'))}>    		
+    	</div>
+    	<div class="left_news">
+    		<h3 class="left_h3"><span>LATEST NEWS</span></h3>
+    		<{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>    		
+    	</div>
+    	<include file='Public:e_contact'/>
+    </div>
+
+	</div>
+</div> 
+    
+<include file='Public:e_foot'/>
+
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$list.title}></title>
+    <meta name="keywords" content="<{$list.keywords}>" />
+    <meta name="description" content="<{$list.description}>" />
+    <include file='Public:file'/>
+  </head>
+  <body>
+
+<include file='Public:c_head'/>
+<include file='Public:listbg'/>
+
+<div class="container">
+	<div class="bread_bg">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="bread_nav">
+					<span class="fa fa-home" aria-hidden="true"></span>&nbsp;<{:W('Bread',array('id'=>$listid,'lang'=>'c'))}>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+   
+<div class="container">    
+	<div class="row">
+					
+		<!-- right -->
+		<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+			<div class="right_head">
+				<h2><span><{$list.name}></span></h2>
+			</div>
+			<ul class="right_new">
+				<volist name='article' id='vo'>
+					<li class="col-xs-12 col-sm-12 col-md-12">	
+						<div class="col-md-3">
+							<a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'c'))}>" title="<{$vo.title}>"><img src="__ROOT__/Uploads/<{$vo.thumb}>" width="100%"/></a>
+						</div>
+						<div class="col-md-9">
+							<div class="title"><a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'c'))}>" title="<{$vo.title}>"><{$vo.title}></a></div>
+							<div class="time"><i class="fa fa-calendar" aria-hidden="true"></i><{$vo.time|date='Y-m-d',###}></div>					 
+							<div class="zhai"><{$vo.description}></div>
+							<div style="padding:20px 0;" class="new_bnt">  <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'c'))}>" title="<{$vo.title}>">了解更多 <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a></div> 
+						</div>
+					</li>
+				</volist>  
+			</ul>
+			<div class="page">     <{$page}>  </div>
+		</div>
+					
+		<!-- left -->
+		<div class="col-xs-12 col-sm-4 col-md-3">
+			<h3 class="left_h3"><span>导航栏目</span></h3>
+			<div class="left_column">
+				<{:W('Left',array('id'=>$list['bid'],'type'=>$list['type'],'lang'=>'c'))}>				
+			</div>
+			<div class="left_news">
+				<h3 class="left_h3"><span>新闻中心</span></h3>
+				<a href="#"><img class="alignnone size-full wp-image-171" src="__ROOT__/Uploads/<{:W('Flash',array('type'=>3,'id'=>17))}>" alt="" width="260px" ></a>
+				<{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'c'))}>				
+			</div>
+			<include file='Public:c_contact'/>
+		</div>
+	
+	</div>
+</div> 
+
+      <include file='Public:c_foot'/>
+    
+  </body>
+</html>

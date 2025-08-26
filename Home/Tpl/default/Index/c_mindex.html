@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$Think.config.seo_title}></title>
+    <meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+    <meta name="description" content="<{$Think.config.seo_description}>" />
+    <include file='Public:file'/>
+  </head>
+<body style="margin-bottom: 50px;">
+
+      <include file='Public:c_head'/>
+      
+      <{:W('Flash',array('type'=>'app','lang'=>'c'))}>
+      <script type="text/javascript">
+            $('.bxslider').bxSlider({
+                  adaptiveHeight: true,
+                  infiniteLoop: true,
+                  hideControlOnEnd: true,
+                  auto:true
+            });
+      </script>
+
+      <div class="product_bg">
+            <div class="container">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="product_index">
+                                    <div class="product_head product_ehead" data-move-y="-30px">
+                                          <h2><{$titledata.NAME1}></h2>
+                                          <p><{$titledata.NAME2}></p>
+                                    </div>
+                                    <div class="product_list">
+                                          <{:W('List',array('table'=>'Product','bid'=>1,'id'=>1,'lang'=>'c'))}>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="case_bg" style="background-image: url(__ROOT__/Uploads/<{:W('Flash',array('type'=>3,'id'=>13))}>); background-size: cover;background-attachment: fixed;background-color: #03032a;">
+            <div class="container">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="case_head" data-move-y="-50px">
+                                    <h2><{$titledata.NAME3}></h2>
+                                    <p><{$titledata.NAME4}></p>
+                              </div>
+                              <div class="case_list">
+                                    <{:W('List',array('table'=>'Photo','bid'=>15,'id'=>15,'lang'=>'c'))}>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="advantage_bg">
+            <div class="container">    
+                  <div class="row">
+                         <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="advantage_head" data-move-y="-40px">
+                                  <h2><{$titledata.NAME5}></h2>
+                                  <p><{$titledata.NAME6}></p>
+                              </div>
+                             <{:W('Flash',array('type'=>'adv','lang'=>'c'))}>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="container">    
+            <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="about_head" data-move-y="-50px">
+                              <h2><{$titledata.NAME7}></h2>
+                              <p><{$titledata.NAME8}></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 js_about_left" data-move-y="-50px">
+                              <h3 class="about_h3"><{$titledata.NAME9}></h3>
+                              <p class="about_p"><{$titledata.NAME10}></p>
+                              <{:W('About',array('id'=>25,'len'=>165,'lang'=>'c'))}>
+                              <a href="<{:W('Listhref',array('id'=>25,'lang'=>'c'))}>" class="about_btn">了解更多</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 js_about_right" data-move-y="50px">
+                              <video class="about_video" poster="" controls>
+                                    <source src="<{$Think.config.web_video}>" type="video/mp4">
+                              </video>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="news_bg">
+            <div class="container">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="news_head" data-move-y="-50px">
+                                    <h2><{$titledata.NAME11}></h2>
+                                    <p><{$titledata.NAME12}></p>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="news_list">
+                                         <{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'c','moban'=>'c_index_new'))}>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="container">    
+            <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="cooperation_head" data-move-y="-40px">
+                              <h2><{$titledata.NAME13}></h2>
+                              <p><{$titledata.NAME14}></p>
+                        </div>
+                        <{:W('Link',array('type'=>2,'lang'=>'c'))}>
+                  </div>
+            </div>
+      </div>
+
+      <script src="../Public/js/jquery.smoove.min.js"></script>
+      <script>$('.product_head,.product_img,.case_head,.case_img,.advantage_head,.advantage_list,.about_head,.js_about_left,.js_about_right,.news_head,.news_img,.cooperation_head,.cooperation_img').smoove({offset:'10%'});</script>
+     
+      <include file='Public:c_foot'/>
+
+      <{:W('Link',array('type'=>1,'lang'=>'c'))}>
+      <{:W('Tags',array('lang'=>'c'))}>
+
+  </body>
+</html>

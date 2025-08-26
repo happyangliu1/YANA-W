@@ -1,0 +1,3 @@
+<?php
+//000002592000a:3:{s:4:"type";i:1;s:4:"lang";s:1:"e";s:5:"links";a:2:{i:0;a:7:{s:2:"id";s:1:"2";s:4:"name";s:9:"淘宝店";s:5:"ename";s:6:"TaoBao";s:5:"photo";s:0:"";s:3:"url";s:0:"";s:4:"eurl";s:0:"";s:4:"sort";s:1:"1";}i:1;a:7:{s:2:"id";s:1:"1";s:4:"name";s:12:"外贸网站";s:5:"ename";s:0:"";s:5:"photo";s:0:"";s:3:"url";s:23:"http://web.soonidea.cn/";s:4:"eurl";s:23:"http://web.soonidea.cn/";s:4:"sort";s:1:"2";}}}
+?>

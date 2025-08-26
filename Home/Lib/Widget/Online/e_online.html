@@ -1,0 +1,53 @@
+<if condition="$Think.config.is_online neq 0">
+<!--客服面板-->
+<load href="__PUBLIC__/css/eonline.css"/>
+
+<div id="service">
+	<div id="ser_main">
+		<a rel="nofollow" id="floatShow1" href="javascript:void(0);" title="Open">&nbsp;</a> 
+	</div>
+	
+	<div id="online">
+		<div class="onlineMenu">
+			<ul> 
+				<li class="online_title"><i class="fa fa-comments-o" style="font-size:30px; margin-right:5px;" aria-hidden="true"></i>online service</li> 				
+				<if condition="$Think.config.skype_account neq ''">
+					<foreach name="online_skype" item="vo">
+						<li class="call">
+							<div class="msggroup">
+								<a href="skype:<{$online_skype.$key}>?chat" title="<{$key}>"><i class="fa fa-skype" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; <{$key}></a>
+							</div>
+						</li>
+					</foreach>
+				</if>
+				
+				<li class="call"><a rel="nofollow" title="<{$Think.config.web_icp}>" href="https://api.whatsapp.com/send?phone=<{$Think.config.web_icp}>"><i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<{$Think.config.web_icp}></a></li>  
+				<li class="call"><a rel="nofollow" title="<{$Think.config.web_email}>" href="mailto:<{$Think.config.web_email}>"><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;<{$Think.config.web_email}></a></li>
+				<if condition="$Think.config.qq_account neq ''">
+					<foreach name="online_qq" item="vo">
+						<li class="call">
+							<div class="msggroup">
+								<a target="_blank" title="<{$key}>" href="http://wpa.qq.com/msgrd?v=3&uin=<{$online_qq.$key}>&site=qq&menu=yes"><i class="fa fa-qq" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<{$key}></a>
+							</div>
+						</li>
+					</foreach>
+				</if>        
+				<li class="call">
+                	<div class="qrcodePanel">
+                		<p><i class="fa fa-weixin" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;We chat</p>
+                		<img style="width:180px;height:180px;" src="__ROOT__/Uploads/<{$Think.config.web_qrcode}>"> 
+                	</div>                                                                          
+                </li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="goTop">
+	<a rel="nofollow"  class="totop" style="display: inline;"></a>
+</div>
+
+    <load href="__PUBLIC__/js/online.js"/>
+ 
+</if>

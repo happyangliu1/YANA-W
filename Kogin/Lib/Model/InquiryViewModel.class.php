@@ -1,0 +1,23 @@
+<?php
+// +----------------------------------------------------------------------
+// | 蓝科企业网站系统PHP版
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013-2019 http://lankecms.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Sale ( http://lankecms.taobao.com/ )
+// +----------------------------------------------------------------------
+// | Author: 钟若天 <lankecms@163.com>
+// +----------------------------------------------------------------------
+
+class InquiryViewModel extends ViewModel {
+
+   public $viewFields = array(
+		'inquiry' => array('id','name','time','_type'=>'LEFT'),
+		'product' => array( 'thumb','name'=>'product_name', '_on' => 'inquiry.pid = product.id')
+		);
+
+
+
+
+}
+?>

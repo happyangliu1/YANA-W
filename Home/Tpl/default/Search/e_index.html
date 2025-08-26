@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$Think.config.seo_etitle}></title>
+    <meta name="keywords" content="<{$Think.config.seo_ekeywords}>" />
+    <meta name="description" content="<{$Think.config.seo_edescription}>" />
+    <include file='Public:file'/>
+  </head>
+  <body>
+  
+      <include file='Public:e_head'/>
+      <include file='Public:listbg'/>
+
+      <div class="container">
+            <div class="bread_bg">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="bread_nav">
+                                    <span class="fa fa-home" aria-hidden="true"></span>&nbsp;<a href="<{:W('Index',array('cnen'=>'en','lang'=>'e'))}>">Home</a> &gt; Product Search
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+   
+      <div class="container">    
+            <div class="row">
+
+                  <!-- right -->
+                  <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                        <div class="right_head">
+                              <h2><span>Product Search</span></h2>
+                        </div>
+          
+                        <div class="product_list product_list2">
+                              <volist name='product' id='vo'> 
+                              <div class="col-sm-4 col-md-4 col-mm-6 product_img">
+                                    <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Product','lang'=>'e'))}>">
+                                           <img  src="__ROOT__/Uploads/<{$vo.thumb}>" class="img-thumbnail" alt="<{$vo.ename}>"/>
+                                    </a>
+                                    <p class="product_title">
+                                          <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Product','lang'=>'e'))}>"><{$vo.ename|redWord=###,26,$keyword}></a>
+                                    </p>
+                              </div>
+                              </volist>
+                        </div>
+
+                        <div class="page">     
+                        <{$page}>              
+                        </div>
+
+                  </div>
+
+                  <!-- left -->
+                  <div class="col-xs-12 col-sm-4 col-md-3">
+                        <h3 class="left_h3"><span>CATEGORIES</span></h3>
+                        <div class="left_column">
+                              <{:W('Left',array('id'=>$pid['id'],'type'=>'product','lang'=>'e'))}>
+                        </div>
+                        <div class="left_news">
+                              <h3 class="left_h3"><span>LATEST NEWS</span></h3>
+                              <{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>
+                        </div>
+                        <include file='Public:e_contact'/>
+                  </div>
+
+            </div>
+      </div> 
+    
+      <include file='Public:e_foot'/>
+
+  </body>
+</html>

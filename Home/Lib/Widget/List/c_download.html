@@ -1,0 +1,7 @@
+<if condition="$download">
+  <ul class="index_down">
+    <volist name="download" id="vo" offset="0" length="5">
+      <li><a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'download','lang'=>'c'))}>" title="<{$vo.name}>"><{$vo.name|mb_substr=###,0,12,'utf-8'}></a><span class='news_time'><{$vo.time|date="Y-m-d",###}></span></li>
+    </volist>
+  </ul>
+</if>

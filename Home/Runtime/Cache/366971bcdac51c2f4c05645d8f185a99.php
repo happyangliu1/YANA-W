@@ -1,0 +1,2 @@
+<?php if (!defined('THINK_PATH')) exit();?><a href="<?php echo W('Index',array('cnen'=>'en','lang'=>'e'));?>">Home</a> &gt;
+<?php if(is_array($Bread)): $i = 0; $__LIST__ = $Bread;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href="<?php echo W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link'],'lang'=>'e'));?>"> <?php echo ($vo["ename"]); ?> </a><?php if($i != count($Bread)): ?>&gt;<?php endif; endforeach; endif; else: echo "" ;endif; ?>

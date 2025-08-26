@@ -1,0 +1,15 @@
+<ul class="left_nav_ul" id="firstpane">
+      <volist name='bigclass' id='vo'>
+      <li>
+            <a class="biglink" href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link'],'lang'=>'e'))}>"><{$vo.ename}></a><span class="menu_head">+</span>
+      
+            <ul class="left_snav_ul menu_body">
+            <volist name='smallclass' id='svo'>
+            <eq name="svo.pid" value="$vo.id">
+                  <li><a href="<{:W('Listhref',array('url'=>$svo['url'],'id'=>$svo['id'],'link'=>$svo['link'],'lang'=>'e'))}>"><{$svo.ename}></a></li>
+            </eq>
+            </volist>
+            </ul>
+          </li>
+      </volist>
+</ul>

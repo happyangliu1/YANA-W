@@ -1,0 +1,4 @@
+<a href="<{:W('Index',array('cnen'=>'cn','lang'=>'c'))}>">网站首页</a> &gt;
+<volist name='Bread' id='vo'>
+<a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link'],'lang'=>'c'))}>"> <{$vo.name}> </a><if condition="$i neq count($Bread)">&gt;</if>
+</volist>

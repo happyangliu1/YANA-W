@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default navbar-fixed-bottom mfoot_box">
+<div class="mfoot_nav btn-group dropup">
+	<a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span class="fa fa-share btn-lg" aria-hidden="true"></span>分享</a>  
+	<div class="dropdown-menu mfoot_share">
+		<div class="bdsharebuttonbox" style="display: inline-block; float:left;">
+			<a href="#" class="bds_more" data-cmd="more"></a>
+			<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+			<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+			<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+		</div>
+		<script>
+			window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+		</script>
+	</div>
+</div>
+
+<div class="mfoot_nav"><a href="<{:W('Listhref',array('id'=>31,'lang'=>'c'))}>"><span class="fa fa-phone btn-lg" aria-hidden="true"></span>询价</a></div>
+<div class="mfoot_nav"  aria-hidden="true"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<button id="foot_btn" type="button"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="width:100%; border: 0px; background: transparent;">
+		<span class="fa fa-th-list btn-lg"></span> 分类
+	</button>
+</div>
+<div class="mfoot_nav">
+	<a id="gototop" href="#"><span class="fa fa-arrow-circle-up" aria-hidden="true"></span>顶部</a>
+</div>
+</nav>
+
+<footer>
+	<div class="container">    
+		<div class="row">
+			
+			<div class="col-xs-12 col-sm-4 col-md-4 footer_contact">
+			<p class="footer_menu_first">联系我们</p>
+			<p>手机: <{$Think.config.web_tel}></p>
+			<p>邮箱: <a style="color:#333" href="mailto:<{$Think.config.web_email}>"> <{$Think.config.web_email}></a></p>
+			<p>地址: <{$Think.config.web_add}></p>
+			<p>Whatsapp: <{$Think.config.web_icp}></p>
+		</div>
+		<div class="col-xs-12 col-sm-8 col-md-8">
+			<{:W('Foot',array('lang'=>'c'))}>			
+		</div>
+		
+		</div>
+	</div> 
+</footer>
+
+<div class="footer-bar">
+	<div>	
+		<include file='Public:translate'/>
+		<p><{$Think.config.web_copyright}>&nbsp;<a href="https://www.soonidea.cn" style="color: #666;">POWERED BY YUKE&nbsp;</a><a href="__ROOT__/c_sitemap.html" target="_blank" >Sitemap</a><{$Think.config.web_count}> </p>
+	</div>
+</div>
+
+<{:W('Online',array('lang'=>'c'))}>
+
+<{$Think.config.web_baidu}>

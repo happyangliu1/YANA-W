@@ -1,0 +1,9 @@
+<if condition="$new">  
+<volist name="new" id="vo" offset="0" length="4">
+	<p class="left"> 
+		<i class="fa fa-file-text-o" aria-hidden="true"  ></i> &nbsp;
+		<a style="font-size:12px;" href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'new','lang'=>'e'))}>" title="<{$vo.etitle}>"><{$vo.etitle|mb_substr=###,0,30,'utf-8'}></a>
+		<span style="color:white;" >&nbsp;<{$vo.time|date='Y-m-d',###}></span>
+	</p>
+</volist> 
+</if>

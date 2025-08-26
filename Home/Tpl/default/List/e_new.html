@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$list.etitle}></title>
+    <meta name="keywords" content="<{$list.ekeywords}>" />
+    <meta name="description" content="<{$list.edescription}>" />
+    <include file='Public:file'/>
+  </head>
+  <body>
+
+<include file='Public:e_head'/>
+<include file='Public:listbg'/>
+
+<div class="bread_bg">
+	<div class="container">    
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="bread_nav">
+					<span>Your location: </span><{:W('Bread',array('id'=>$listid,'lang'=>'e'))}>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+   
+<div class="container">    
+	<div class="row">
+				
+		<!-- right -->
+		<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+			<div class="right_head">
+				<h2><span><{$list.ename}></span></h2>
+			</div>
+			<ul class="right_new">
+				<volist name='article' id='vo'>
+					<li class="col-xs-12 col-sm-12 col-md-12">	
+						<div class="col-md-3">
+							<a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'e'))}>" title="<{$vo.etitle}>"><img src="__ROOT__/Uploads/<{$vo.thumb}>" width="100%"/></a>
+						</div>
+						<div class="col-md-9">
+							<div class="title"><a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'e'))}>" title="<{$vo.etitle}>"><{$vo.etitle}></a></div>
+							<div class="time"><i class="fa fa-calendar" aria-hidden="true"></i><{$vo.time|date='Y-m-d',###}></div>					 
+							<div class="zhai"><{$vo.edescription}></div>
+							<div style="padding:20px 0;" class="new_bnt" > <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table,'lang'=>'e'))}>" class="new_bnt" title="<{$vo.etitle}>">READ MORE <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a></div> 
+						</div>
+					</li>
+				</volist>  
+			</ul>
+			
+			<div class="page">      <{$page}>   </div>
+		</div>
+
+    <!-- left -->
+    <div class="col-xs-12 col-sm-4 col-md-3">
+    	<h3 class="left_h3"><span>CATEGORIES</span></h3>
+    	<div class="left_column">
+    		<{:W('Left',array('id'=>$list['bid'],'type'=>$list['type'],'lang'=>'e'))}>
+    	</div>
+    	<div class="left_news">
+    		<h3 class="left_h3"><span>LATEST NEWS</span></h3>
+    		<a href="#"><img class="alignnone size-full wp-image-171" src="__ROOT__/Uploads/<{:W('Flash',array('type'=>3,'id'=>17))}>" alt="" width="260px" ></a>
+    		<{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>
+    	</div>
+    	<include file='Public:e_contact'/>
+    </div>
+    
+	</div>
+</div> 
+
+      <include file='Public:e_foot'/>
+    
+  </body>
+</html>

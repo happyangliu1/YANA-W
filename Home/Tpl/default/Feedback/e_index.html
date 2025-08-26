@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback-<{$Think.config.seo_etitle}></title>
+    <meta name="keywords" content="<{$Think.config.seo_ekeywords}>" />
+    <meta name="description" content="<{$Think.config.seo_edescription}>" />
+    <include file='Public:file'/>
+
+  </head>
+  <body>
+  
+      <include file='Public:e_head'/>
+      <include file='Public:listbg'/>
+
+      <div class="container">
+            <div class="bread_bg">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="bread_nav">
+                                    <span class="fa fa-home" aria-hidden="true"></span>&nbsp;<a href="<{:W('Index',array('cnen'=>'en','lang'=>'e'))}>">Home</a> &gt; Feedback
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+   
+      <div class="container">    
+            <div class="row">
+
+                  <!-- right -->
+                  <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                        <div class="right_head">
+                              <h2><span>Feedback</span></h2>
+                        </div>
+  
+                        <div class="feedback">
+                              <form id="myform" name="myform" class="form-horizontal" method="post" action="__ROOT__/?m=Feedback&a=check&g=e" onSubmit="return CheckJob()">
+
+                              <volist name='bigform' id='vo'>
+                              <switch name="vo.type">
+
+                              <case value="text">
+                                    <div class="form-group">
+                                          <label for="<{$vo.fieldname}>"class="col-sm-3 control-label"><{$vo.ename}>：</label>
+                                          <div class="col-sm-6">
+                                                <input type="text" name="<{$vo.fieldname}>" class="form-control" id="<{$vo.fieldname}>" <if condition='$vo.required eq 1'>placeholder="Required" required="required"</if>>
+                                          </div>
+                                    </div>
+                              </case>
+
+                              <case value="email">
+                                    <div class="form-group">
+                                          <label for="inputEmail" class="col-sm-3 control-label"><{$vo.ename}>：</label>
+                                          <div class="col-sm-6">
+                                                <input type="email" name="<{$vo.fieldname}>" class="form-control" id="inputEmail" <if condition='$vo.required eq 1'>placeholder="Required" required="required"</if>>
+                                          </div>
+                                    </div>
+                              </case>
+
+                              <case value="radio">
+                                    <div class="form-group">
+                                          <label class="col-xs-12 col-sm-3 control-label"><{$vo.ename}>：</label>
+                                          <div class="col-xs-12 col-sm-6">
+
+                                          <volist name='smallform' id='svo'>
+                                          <eq name="svo.pid" value="$vo.id">
+                                                <label class="radio-inline">
+                                                      <input type="radio" name="<{$svo.fieldname}>" value="<{$svo.ename}>" <if condition='$vo.required eq 1'>required="required"</if>/><{$svo.ename}>
+                                                </label>&nbsp;&nbsp;
+                                          </eq>
+                                          </volist>
+
+                                          </div>
+                                    </div>
+                              </case>
+
+                              <case value="select">
+                                    <div class="form-group">
+                                          <label class="col-xs-12 col-sm-3 control-label"><{$vo.ename}>：</label>
+                                          <div class="col-xs-12 col-sm-6">
+
+                                                <select class="form-control" name="<{$vo.fieldname}>">
+                                                <volist name='smallform' id='svo'>
+                                                <eq name="svo.pid" value="$vo.id">
+                                                <option value="<{$svo.ename}>"><{$svo.ename}></option>
+                                                </eq>
+                                                </volist>
+                                                </select>
+
+                                          </div>
+                                    </div>
+                              </case>
+
+                              <case value="textarea">
+                                    <div class="form-group">
+                                          <label for="contents" class="col-sm-3 control-label"><{$vo.ename}>：</label>
+                                          <div class="col-sm-6">
+                                            <textarea name="<{$vo.fieldname}>" class="form-control" rows="3" required="required"></textarea>
+                                          </div>
+                                    </div>
+                              </case>
+
+                              <default />请检查后台设置
+                              </switch>
+                              </volist>
+
+                                   <div class="form-group">
+                                          <label for="code" class="col-xs-12 col-sm-3 control-label">Captcha：</label>
+                                          <div class="col-xs-7 col-sm-2">
+                                                <input type="text" name="code" class="form-control" id="code" placeholder="Captcha">
+                                          </div>
+                                          <div class="col-xs-2 col-sm-1">
+                                                <img class="codeimg" src="<{:U('Common/verify')}>" onclick='this.src=this.src+"?"+Math.random()'/>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <div class="col-sm-offset-3 col-sm-10">
+                                                <button type="submit" name="button" value="Send" class="btn btn-danger page-btn">Send</button>&nbsp;
+                                                <button type="reset" name="reset" class="btn btn-default grey-btn">Reset</button>
+                                          </div>
+                                    </div>
+                              </form>
+                        </div>
+
+                  </div>
+
+                  <!-- left -->
+                  <div class="col-xs-12 col-sm-4 col-md-3">
+                        <h3 class="left_h3"><span>CATEGORIES</span></h3>
+                        <div class="left_column">
+                              <{:W('Left',array('id'=>1,'type'=>'product','lang'=>'e'))}>
+                        </div>
+                        <div class="left_news">
+                              <h3 class="left_h3"><span>LATEST NEWS</span></h3>
+                              <{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>
+                        </div>
+                        <include file='Public:e_contact'/>
+                  </div>
+
+            </div>
+      </div> 
+    
+      <include file='Public:e_foot'/>
+
+  </body>
+</html>

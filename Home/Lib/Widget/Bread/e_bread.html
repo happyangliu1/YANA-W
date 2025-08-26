@@ -1,0 +1,4 @@
+<a href="<{:W('Index',array('cnen'=>'en','lang'=>'e'))}>">Home</a> &gt;
+<volist name='Bread' id='vo'>
+<a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link'],'lang'=>'e'))}>"> <{$vo.ename}> </a><if condition="$i neq count($Bread)">&gt;</if>
+</volist>

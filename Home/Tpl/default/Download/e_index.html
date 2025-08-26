@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><{$article.etitle}></title>
+    <meta name="keywords" content="<{$article.ekeywords}>" />
+    <meta name="description" content="<{$article.edescription}>" />
+    <include file='Public:file'/>
+  </head>
+  <body>
+  
+      <include file='Public:e_head'/>
+      <include file='Public:listbg'/>
+
+      <div class="container">
+            <div class="bread_bg">    
+                  <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                              <div class="bread_nav">
+                                    <span class="fa fa-home" aria-hidden="true"></span>&nbsp;<{:W('Bread',array('id'=>$article['pid'],'lang'=>'e'))}>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="container">    
+           <div class="row">
+
+                 <!-- right -->
+                 <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                        <div class="right_head">
+                              <h2><span><{$articlelist.ename}></span></h2>
+                        </div>
+                        <h1 class="right_contents_h1"><{$article.ename}></h1>
+                        <div class="download_btn">
+                              <if condition="$article.link eq ''">
+                              <a href="__ROOT__/?m=common&a=down&id=<{$article.id}>" class="btn btn-info page-btn" role="button" target="_blank">
+                              <else />
+                              <a href="<{$article.link}>" class="btn btn-info page-btn" role="button" target="_blank">
+                              </if>
+                              <span class="fa fa-download " aria-hidden="true"></span> &nbsp;DOWNLOAD </a>
+                        </div>
+
+                        <div class="right_contents">
+                              <{$article.econtents}>
+                        </div>
+
+                        <div class="point">
+                              <span class="to_prev col-xs-12 col-sm-6 col-md-6"><{$prevnext.prev}></span>
+                              <span class="to_next col-xs-12 col-sm-6 col-md-6"><{$prevnext.next}></span>
+                        </div>
+
+                        <div class="list_related"> 
+                              <div class="right_head">
+                                    <h2><span>RELATED DOWNLOAD</span></h2>
+                              </div>
+                              <ul class="right_new">
+                                    <volist name='related' id='vo' offset="0" length="5">
+                                    <li>
+                                          <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Download','lang'=>'e'))}>" title="<{$vo.etitle}>"><{$vo.etitle|mb_substr=###,0,60,'utf-8'}></a>
+                                          <span class="right_new_time"><{$vo.time|date='Y-m-d',###}></span>
+                                    </li>
+                                    </volist>        
+                              </ul>
+                        </div>
+
+                 </div>
+
+                  <!-- left -->
+                  <div class="col-xs-12 col-sm-4 col-md-3">
+                        <h3 class="left_h3"><span>CATEGORIES</span></h3>
+                        <div class="left_column">
+                              <{:W('Left',array('id'=>$article['bid'],'type'=>'download','lang'=>'e'))}>
+                        </div>
+                        <div class="left_news">
+                              <h3 class="left_h3"><span>LATEST NEWS</span></h3>
+                              <{:W('List',array('table'=>'New','bid'=>2,'id'=>2,'lang'=>'e'))}>
+                        </div>
+                        <include file='Public:e_contact'/>
+                  </div>
+
+            </div>
+      </div> 
+
+      <include file='Public:e_foot'/>
+    
+  </body>
+</html>
